@@ -1,0 +1,31 @@
+name: Test
+
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test Docker image
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build
+        working-directory: tests
+        run: docker compose build
+
+      - name: Start
+        working-directory: tests
+        run: docker compose up -d
+
+      - name: Check
+        working-directory: tests
+        run: ./check.sh
+
+      - name: Cleaning up
+        working-directory: tests
+        if: always()
+        run: docker compose down

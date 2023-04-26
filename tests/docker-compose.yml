@@ -1,0 +1,6 @@
+services:
+  pubsub:
+    build: ..
+    tty: true
+    ports:
+      - 8085:8085 # PubSub
