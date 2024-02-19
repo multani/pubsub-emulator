@@ -1,4 +1,4 @@
-FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:463.0.0-emulators
+FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:464.0.0-emulators
 
 RUN apt-get update \
     && apt-get install --yes tini \
